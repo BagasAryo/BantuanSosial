@@ -25,13 +25,15 @@
     }
     if ($qry == true) {
         if ($conn->query($sql) === TRUE) {
-            if (is_file("img/". $foto_lama) && ($flagFoto == true)) // Jika gambar ada
+            if (is_file("img/". $foto_lama) && ($flagFoto == true)){
                 unlink("img/". $foto_lama);
-            $conn->close();
-            header("location:listbarang.php");
-        } else {
-            $conn->close();
-            echo "New records failed";
+                $conn->close();
+                header("location:listbarang.php");
+            } // Jika gambar ada
+            else {
+                $conn->close();
+                echo "New records failed";
+            }
         }
     }
 ?>
